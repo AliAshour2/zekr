@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/quran_model.dart';
 import 'package:zekr/screens/quran_screen.dart';

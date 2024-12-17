@@ -17,6 +17,8 @@ class AppTheme {
     dividerTheme: const DividerThemeData(color: AppColors.mainLightColor),
     iconTheme: const IconThemeData(color: AppColors.black),
     textTheme: const TextTheme(
+        titleSmall: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w400, color: AppColors.black),
         titleMedium: TextStyle(
             fontSize: 25, fontWeight: FontWeight.w400, color: AppColors.black)),
     primaryColor: AppColors.mainLightColor,
@@ -53,6 +55,7 @@ class AppTheme {
     dividerTheme: const DividerThemeData(color: AppColors.mainLightColor),
     iconTheme: const IconThemeData(color: Colors.white),
     textTheme: const TextTheme(
+        titleLarge: TextStyle(),
         titleMedium: TextStyle(
             fontSize: 25, fontWeight: FontWeight.w400, color: Colors.white)),
     primaryColor: AppColors.mainDarkColor,

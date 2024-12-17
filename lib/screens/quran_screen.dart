@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:zekr/models/quran_model.dart';
 
-class QuranScreen extends StatelessWidget {
+class QuranScreen extends StatefulWidget {
   const QuranScreen({super.key});
   static const String routeName = '/quranScreen';
 
   @override
+  State<QuranScreen> createState() => _QuranScreenState();
+}
+
+class _QuranScreenState extends State<QuranScreen> {
+  List<String> virses = [];
+  @override
   Widget build(BuildContext context) {
     QuranModel quranModel =
         ModalRoute.of(context)!.settings.arguments as QuranModel;
+    if (virses.isEmpty) loadSuraContent(quranModel.index);
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -44,10 +52,37 @@ class QuranScreen extends StatelessWidget {
                 indent: MediaQuery.of(context).size.width * 0.05,
                 endIndent: MediaQuery.of(context).size.width * 0.05,
               ),
+              virses.isEmpty
+                  ? const Expanded(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  : Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) => Text(
+                          virses[index],
+                          style: Theme.of(context).textTheme.titleSmall,
+                          textDirection: TextDirection.rtl,
+                          textAlign: TextAlign.center,
+                        ),
+                        itemCount: virses.length,
+                      ),
+                    )
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<void> loadSuraContent(int index) async {
+    Future.delayed(const Duration(seconds: 4));
+    rootBundle.loadString('assets/quran/${index + 1}.txt').then((data) {
+      virses = data.split('\n');
+      setState(() {});
+    });
   }
 }
