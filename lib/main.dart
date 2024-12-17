@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zekr/ui/home_screen.dart';
+import 'package:zekr/themes/app_theme.dart';
+import 'package:zekr/screens/home_screen.dart';
+
+import 'screens/quran_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Zikr',
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      routes: {
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        QuranScreen.routeName: (context) => const QuranScreen(),
+      },
+      initialRoute: HomeScreen.routeName,
     );
   }
 }

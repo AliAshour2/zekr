@@ -65,6 +65,7 @@ flutter_native_splash:
     # ensure that the most important design elements of your image are placed within a circular area
     # with a 768 diameter at the center of the 1152x1152 canvas.
     image: assets/images/android12splash.png
+    color: "#ffffff"
 
 
     # Splash screen background color.
