@@ -16,4 +16,6 @@ class AppImages {
   static const String radioImage = 'assets/images/radio_image.png';
   static const String splashDark = 'assets/images/splash_dark.png';
   static const String splash = 'assets/images/splash.png';
+  static const String quranIconblue4 = 'assets/images/QuranIconblue4.png';
+  static const String quranIconwood = 'assets/images/Quranbwood.png';
 }

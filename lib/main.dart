@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         QuranScreen.routeName: (context) => const QuranScreen(),

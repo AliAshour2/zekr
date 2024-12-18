@@ -4,134 +4,36 @@ import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/quran_model.dart';
 import 'package:zekr/screens/quran_screen.dart';
 
-class QuranTab extends StatelessWidget {
+class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<String> arSuras = [
-      "الفاتحه",
-      "البقرة",
-      "آل عمران",
-      "النساء",
-      "المائدة",
-      "الأنعام",
-      "الأعراف",
-      "الأنفال",
-      "التوبة",
-      "يونس",
-      "هود",
-      "يوسف",
-      "الرعد",
-      "إبراهيم",
-      "الحجر",
-      "النحل",
-      "الإسراء",
-      "الكهف",
-      "مريم",
-      "طه",
-      "الأنبياء",
-      "الحج",
-      "المؤمنون",
-      "النّور",
-      "الفرقان",
-      "الشعراء",
-      "النّمل",
-      "القصص",
-      "العنكبوت",
-      "الرّوم",
-      "لقمان",
-      "السجدة",
-      "الأحزاب",
-      "سبأ",
-      "فاطر",
-      "يس",
-      "الصافات",
-      "ص",
-      "الزمر",
-      "غافر",
-      "فصّلت",
-      "الشورى",
-      "الزخرف",
-      "الدّخان",
-      "الجاثية",
-      "الأحقاف",
-      "محمد",
-      "الفتح",
-      "الحجرات",
-      "ق",
-      "الذاريات",
-      "الطور",
-      "النجم",
-      "القمر",
-      "الرحمن",
-      "الواقعة",
-      "الحديد",
-      "المجادلة",
-      "الحشر",
-      "الممتحنة",
-      "الصف",
-      "الجمعة",
-      "المنافقون",
-      "التغابن",
-      "الطلاق",
-      "التحريم",
-      "الملك",
-      "القلم",
-      "الحاقة",
-      "المعارج",
-      "نوح",
-      "الجن",
-      "المزّمّل",
-      "المدّثر",
-      "القيامة",
-      "الإنسان",
-      "المرسلات",
-      "النبأ",
-      "النازعات",
-      "عبس",
-      "التكوير",
-      "الإنفطار",
-      "المطفّفين",
-      "الإنشقاق",
-      "البروج",
-      "الطارق",
-      "الأعلى",
-      "الغاشية",
-      "الفجر",
-      "البلد",
-      "الشمس",
-      "الليل",
-      "الضحى",
-      "الشرح",
-      "التين",
-      "العلق",
-      "القدر",
-      "البينة",
-      "الزلزلة",
-      "العاديات",
-      "القارعة",
-      "التكاثر",
-      "العصر",
-      "الهمزة",
-      "الفيل",
-      "قريش",
-      "الماعون",
-      "الكوثر",
-      "الكافرون",
-      "النصر",
-      "المسد",
-      "الإخلاص",
-      "الفلق",
-      "الناس"
-    ];
+  State<QuranTab> createState() => _QuranTabState();
+}
 
+class _QuranTabState extends State<QuranTab> {
+  List<String> surah = [];
+
+  @override
+  Widget build(BuildContext context) {
+    if (surah.isEmpty) {
+      loadSuraNames();
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     return Column(
       children: [
         Image.asset(
-          AppImages.quranScreenLogo,
+          AppImages.quranIconwood,
           height: MediaQuery.of(context).size.height * 0.25,
         ),
+        Text("Sura Name",
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontWeight: FontWeight.w600)),
+        const Divider(),
         Expanded(
           child: ListView.separated(
             separatorBuilder: (context, index) => const Divider(
@@ -140,7 +42,7 @@ class QuranTab extends StatelessWidget {
               height: 2,
               indent: 20,
             ),
-            itemCount: arSuras.length,
+            itemCount: surah.length,
             itemBuilder: (context, index) {
               return Center(
                 child: ListTile(
@@ -148,12 +50,12 @@ class QuranTab extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).pushNamed(QuranScreen.routeName,
                           arguments:
-                              QuranModel(name: arSuras[index], index: index));
+                              QuranModel(name: surah[index], index: index));
                     },
                     child: Text(
-                      arSuras[index],
+                      surah[index],
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                 ),
@@ -163,5 +65,13 @@ class QuranTab extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> loadSuraNames() async {
+    await Future.delayed(const Duration(seconds: 1));
+     rootBundle.loadString('assets/surah/surah_names.txt').then((data) {
+      surah = data.split('\n').map((String e) => e.trim()).toList();
+      setState(() {});
+    });
   }
 }

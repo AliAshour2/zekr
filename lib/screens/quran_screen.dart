@@ -79,7 +79,7 @@ class _QuranScreenState extends State<QuranScreen> {
   }
 
   Future<void> loadSuraContent(int index) async {
-    Future.delayed(const Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 4));
     rootBundle.loadString('assets/quran/${index + 1}.txt').then((data) {
       virses = data.split('\n');
       setState(() {});
