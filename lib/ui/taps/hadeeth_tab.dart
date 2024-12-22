@@ -22,8 +22,8 @@ class _HadeethTabState extends State<HadeethTab> {
     return Column(
       children: [
         Image.asset(
-          AppImages.quranIconwood,
-          height: MediaQuery.of(context).size.height * 0.25,
+          AppImages.hadeethIconwood,
+          height: MediaQuery.of(context).size.height * 0.20,
         ),
         Text(
           "Hadeeth ",

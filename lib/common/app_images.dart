@@ -18,4 +18,5 @@ class AppImages {
   static const String splash = 'assets/images/splash.png';
   static const String quranIconblue4 = 'assets/images/QuranIconblue4.png';
   static const String quranIconwood = 'assets/images/Quranbwood.png';
+  static const String hadeethIconwood = 'assets/images/hadithPageIcon.png';
 }
