@@ -19,11 +19,11 @@ class _QuranScreenState extends State<QuranScreen> {
     if (virses.isEmpty) loadSuraContent(quranModel.index);
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/bg3.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
+          // image: DecorationImage(
+          //   image: AssetImage('assets/images/bg3.png'),
+          //   fit: BoxFit.cover,
+          // ),
+          ),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("zekr"),
@@ -79,7 +79,6 @@ class _QuranScreenState extends State<QuranScreen> {
   }
 
   Future<void> loadSuraContent(int index) async {
-    await Future.delayed(const Duration(seconds: 4));
     rootBundle.loadString('assets/quran/${index + 1}.txt').then((data) {
       virses = data.split('\n');
       setState(() {});

@@ -65,6 +65,7 @@ flutter:
     - assets/hadeth/
     - assets/quran/
     - assets/surah/surah_names.txt
+    - assets/ahadeth.txt
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

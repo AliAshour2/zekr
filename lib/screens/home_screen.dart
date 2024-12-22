@@ -26,9 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/bg3.png'),
+          image: AssetImage(
+            Theme.of(context).brightness == Brightness.dark
+                ? AppImages.darkBg // Use dark mode image
+                : AppImages.bg3, // Use light mode image
+          ),
           fit: BoxFit.cover,
         ),
       ),

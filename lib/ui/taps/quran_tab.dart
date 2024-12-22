@@ -88,7 +88,6 @@ class _QuranTabState extends State<QuranTab> {
 
   Future<void> loadSuraNames() async {
     // Load surah names and then load verses count
-    await Future.delayed(const Duration(seconds: 1));
     rootBundle.loadString('assets/surah/surah_names.txt').then((data) {
       setState(() {
         surah = data.split('\n').map((String e) => e.trim()).toList();
@@ -100,21 +99,21 @@ class _QuranTabState extends State<QuranTab> {
   }
 
   Future<void> loadSura() async {
-    List<int> _versisCount = [];
+    List<int> versisCount = [];
     for (int i = 0; i < surah.length; i++) {
       try {
         String data = await rootBundle.loadString('assets/quran/${i + 1}.txt');
         List<String> content = data.trim().split('\n');
         content.removeWhere((element) => element.isEmpty);
-        _versisCount.add(content.length);
+        versisCount.add(content.length);
       } catch (e) {
         // Handle missing file or other errors gracefully
         debugPrint("Error loading verses for surah ${i + 1}: $e");
-        _versisCount.add(0);
+        versisCount.add(0);
       }
     }
     setState(() {
-      virsesCount = _versisCount;
+      virsesCount = versisCount;
     });
   }
 }
