@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/quran_model.dart';
+import 'package:zekr/providers/theme_provider.dart';
 
 class QuranScreen extends StatefulWidget {
   const QuranScreen({super.key});
@@ -18,12 +21,16 @@ class _QuranScreenState extends State<QuranScreen> {
         ModalRoute.of(context)!.settings.arguments as QuranModel;
     if (virses.isEmpty) loadSuraContent(quranModel.index);
     return Container(
-      decoration: const BoxDecoration(
-          // image: DecorationImage(
-          //   image: AssetImage('assets/images/bg3.png'),
-          //   fit: BoxFit.cover,
-          // ),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Provider.of<ThemeProvider>(context).isDark
+                ? AppImages.darkBg // Use dark mode image
+                : AppImages.bg3, // Use light mode image
           ),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("zekr"),

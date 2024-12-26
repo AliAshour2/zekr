@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zekr/screens/hadeth_screen.dart';
 import 'package:zekr/themes/app_theme.dart';
 import 'package:zekr/screens/home_screen.dart';
+import 'package:zekr/providers/theme_provider.dart';
 
 import 'screens/quran_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: Provider.of<ThemeProvider>(context).appThemeMode,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         QuranScreen.routeName: (context) => const QuranScreen(),

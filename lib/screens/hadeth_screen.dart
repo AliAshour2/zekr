@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/hadith_model.dart';
+import 'package:zekr/providers/theme_provider.dart';
 
 class HadethScreen extends StatefulWidget {
   const HadethScreen({super.key});
@@ -21,7 +23,7 @@ class _HadethScreenState extends State<HadethScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            Theme.of(context).brightness == Brightness.dark
+            Provider.of<ThemeProvider>(context).isDark
                 ? AppImages.darkBg // Use dark mode image
                 : AppImages.bg3, // Use light mode image
           ),
