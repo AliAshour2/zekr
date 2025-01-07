@@ -105,7 +105,7 @@ For any inquiries, please contact: `aliashour468@gmail.com`.
 
 ---
 
-**Made with ❤️ by [Your Name](https://github.com/aliashour2)**
+**Made with ❤️ by [Ali Ashour](https://github.com/aliashour2)**
 
 
    
