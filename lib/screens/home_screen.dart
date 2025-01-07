@@ -5,6 +5,7 @@ import 'package:zekr/ui/taps/quran_tab.dart';
 import 'package:zekr/ui/taps/radio_tab.dart';
 import 'package:zekr/ui/taps/sebha_tab.dart';
 import 'package:zekr/ui/taps/settings_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,32 +39,36 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("zekr"),
+          title: Text(AppLocalizations.of(context)!.islamy),
         ),
         body: tabs[index],
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: index,
-            onTap: (value) {
-              index = value;
-              setState(() {});
-            },
-            items: const [
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(AppImages.iconQuran)),
-                label: 'Quran',
-              ),
-              BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage(AppImages.iconHadeth)),
-                  label: 'Hadeth'),
-              BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage(AppImages.iconSebha)),
-                  label: 'Sebha'),
-              BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage(AppImages.iconRadio)),
-                  label: 'radio'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: 'settings'),
-            ]),
+        bottomNavigationBar: Directionality(
+          textDirection: TextDirection.ltr,
+          child: BottomNavigationBar(
+              currentIndex: index,
+              onTap: (value) {
+                index = value;
+                setState(() {});
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: const ImageIcon(AssetImage(AppImages.iconQuran)),
+                  label: AppLocalizations.of(context)!.quran,
+                ),
+                BottomNavigationBarItem(
+                    icon: const ImageIcon(AssetImage(AppImages.iconHadeth)),
+                    label: AppLocalizations.of(context)!.hadith),
+                BottomNavigationBarItem(
+                    icon: const ImageIcon(AssetImage(AppImages.iconSebha)),
+                    label: AppLocalizations.of(context)!.azkar),
+                BottomNavigationBarItem(
+                    icon: const ImageIcon(AssetImage(AppImages.iconRadio)),
+                    label: AppLocalizations.of(context)!.radio),
+                BottomNavigationBarItem(
+                    icon: const Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings),
+              ]),
+        ),
       ),
     );
   }

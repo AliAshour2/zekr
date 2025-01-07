@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/quran_model.dart';
 import 'package:zekr/screens/quran_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranTab extends StatefulWidget {
   const QuranTab({super.key});
@@ -30,7 +31,7 @@ class _QuranTabState extends State<QuranTab> {
           height: MediaQuery.of(context).size.height * 0.25,
         ),
         Text(
-          "Sura Name",
+          AppLocalizations.of(context)!.surahName,
           style: Theme.of(context)
               .textTheme
               .titleMedium!

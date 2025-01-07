@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/hadith_model.dart';
 import 'package:zekr/screens/hadeth_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadeethTab extends StatefulWidget {
   const HadeethTab({super.key});
@@ -26,7 +27,7 @@ class _HadeethTabState extends State<HadeethTab> {
           height: MediaQuery.of(context).size.height * 0.20,
         ),
         Text(
-          "Hadeeth ",
+          AppLocalizations.of(context)!.hadith,
           style: Theme.of(context)
               .textTheme
               .titleMedium!

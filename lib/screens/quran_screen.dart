@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:zekr/common/app_images.dart';
 import 'package:zekr/models/quran_model.dart';
 import 'package:zekr/providers/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatefulWidget {
   const QuranScreen({super.key});
@@ -33,7 +34,7 @@ class _QuranScreenState extends State<QuranScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("zekr"),
+          title: Text(AppLocalizations.of(context)!.islamy),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(
